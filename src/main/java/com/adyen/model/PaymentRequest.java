@@ -68,9 +68,23 @@ public class PaymentRequest extends AbstractPaymentRequest<PaymentRequest> {
      * how the shopper interacts with the system
      */
     public enum RecurringProcessingModelEnum {
+        /**
+         * A transaction for a fixed or variable amount, which follows a fixed schedule. This is the default value.
+         */
         @SerializedName("Subscription") SUBSCRIPTION("Subscription"),
 
-        @SerializedName("CardOnFile") CARD_ON_FILE("CardOnFile");
+        /**
+         * Card details are stored to enable one-click or omnichannel journeys, or simply to streamline the checkout process.
+         * Any subscription not following a fixed schedule is also considered as a card-on-file transaction.
+         */
+
+        @SerializedName("CardOnFile") CARD_ON_FILE("CardOnFile"),
+
+        /**
+         * A transaction that occurs on a non-fixed schedule and/or have variable amounts. For example, automatic top-ups when a cardholder's balance drops below a certain amount.
+         */
+        @SerializedName("UnscheduledCardOnFile") UNSCHEDULED_CARD_ON_FILE("UnscheduledCardOnFile");
+
 
         private String value;
 
